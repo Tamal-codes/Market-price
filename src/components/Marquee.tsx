@@ -19,7 +19,7 @@ const Marquee = async () => {
               <span>{h.categoryIcon}</span>
               <span>{h.nameBn}</span>
               <span className="font-semibold">
-                {h.today} টাকা/{h.unit}
+                {h.today} টাকা/কেজি
               </span>
 
               {pct && (
