@@ -2,7 +2,7 @@ import { Product } from "@/types/product";
 import ProductCard from "./ProductCard";
 
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch("https://api.abcz.workers.dev/api/bazardor/products", { cache: "no-store" });
+  const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products", { cache: "no-store" });
   if (!res.ok) throw new Error("ডেটা আনতে সমস্যা হয়েছে");
   return res.json();
 }
