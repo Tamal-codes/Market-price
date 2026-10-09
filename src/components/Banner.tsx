@@ -1,20 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import DateText from "./DateText";
 
 const Banner = () => {
-    const date = new Date().toLocaleDateString("bn-BD", {
-        dateStyle: "full",
-        timeZone: "Asia/Dhaka",
-    });
-
     return (
         <section className="container mx-auto px-4 py-6">
-
             <div className="flex items-center justify-between gap-6 rounded-3xl border border-gray-200 bg-green-50/40 px-8 py-10 md:px-12">
-
                 <div className="max-w-2xl">
                     <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
-                        {date}
+                        <DateText />
                     </span>
 
                     <h1 className="mt-3 text-4xl font-bold text-gray-900 md:text-5xl">

@@ -1,11 +1,11 @@
 
 import Image from "next/image";
 import Navlinks from "./Navlinks";
+import DateText from "./DateText";
 
 const Header = () => {
-    const date = new Date().toLocaleDateString("bn-BD", {
-        dateStyle: "full"
-    });
+   
+    
 
     return (
         <header className="border-b border-gray-100 bg-white py-4">
@@ -27,7 +27,7 @@ const Header = () => {
                         <div className="text-2xl font-bold text-gray-900">
                             বাজার দর
                         </div>
-                        <div className="text-sm text-gray-500">{date}</div>
+                    <div className="text-sm text-gray-500"><DateText /></div>
                     </div>
                 </div>
 

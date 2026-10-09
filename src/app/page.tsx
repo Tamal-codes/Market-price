@@ -1,21 +1,26 @@
 import Banner from "@/components/Banner";
 import Marquee from "@/components/Marquee";
-import ProductCard from "@/components/ProductCard";
+import ProductDetails from "@/components/ProductDetails";
 import ProductSection from "@/components/ProductSection";
 
+export default async function Home({
+    searchParams,
+}: {
+    searchParams: Promise<{ category?: string }>;
+}) {
+    const { category } = await searchParams;
 
-
-
-
-export default function Home() {
-  return (
-    <div>
-      <Marquee></Marquee>
-      <Banner></Banner>
- 
-<ProductSection></ProductSection>
-
-
-    </div>
-  );
+    return (
+        <div>
+            <Marquee />
+            {category ? (
+                <ProductDetails selectedCategory={category} />
+            ) : (
+                <>
+                    <Banner />
+                    <ProductSection />
+                </>
+            )}
+        </div>
+    );
 }
