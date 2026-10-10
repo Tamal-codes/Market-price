@@ -3,7 +3,7 @@ import { Product } from "@/types/product";
 
 async function getProduct(slug: string): Promise<Product | undefined> {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
+    "https://api.abcz.workers.dev/api/bazardor/products",
     {
       cache: "no-store",
     }
