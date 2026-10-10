@@ -1,5 +1,5 @@
+
 import Image from "next/image";
-import Link from "next/link";
 import DateText from "./DateText";
 
 const Banner = () => {
@@ -20,12 +20,12 @@ const Banner = () => {
                         বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
                     </p>
 
-                    <Link
-                        href="/products"
+                    <a
+                        href="#সব-পণ্য"
                         className="mt-6 inline-block rounded-lg bg-green-700 px-5 py-2.5 font-semibold text-white shadow-md transition hover:bg-green-800"
                     >
                         সব পণ্য দেখুন
-                    </Link>
+                    </a>
                 </div>
 
                 <div className="hidden shrink-0 md:block">

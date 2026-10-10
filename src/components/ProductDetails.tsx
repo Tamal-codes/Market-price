@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 
 interface Product {
@@ -55,7 +56,10 @@ const ProductDetails = async ({ selectedCategory }: ProductDetailsProps) => {
     const icon = first?.categoryIcon ?? "🛒";
 
     return (
-        <div className="container mx-auto py-8 px-4 space-y-6">
+        <div
+            id="সব-পণ্য"
+            className="container mx-auto py-8 px-4 space-y-6 scroll-mt-6"
+        >
             {/* Category header */}
             <div className="p-6 bg-white rounded-2xl border border-gray-100 flex items-center gap-4">
                 <div className="text-4xl">{icon}</div>

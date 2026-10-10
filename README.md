@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 বাজার দর (BazarDor) — Daily Market Price Tracker
 
-## Getting Started
+**BazarDor** is a Bangla-language web application that helps people check the daily prices of everyday essentials such as rice, lentils, oil, vegetables, fish, meat, eggs and spices.
 
-First, run the development server:
+Users can browse prices by category, follow the live price ticker, see which items became more expensive today, and sign in securely to view full product details and manage their profile.
 
+## 🚀 Live Demo
+
+🌐 **Live Website:** _add your deployed link here_
+
+## 🛠️ Technologies Used
+
+| Category | Technology |
+|---|---|
+| Framework | Next.js (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS + DaisyUI |
+| Authentication | Better Auth (Email/Password, Google, GitHub) |
+| Database | MongoDB Atlas |
+| Notifications | React Hot Toast |
+| Fonts | Noto Serif Bengali, Hind Siliguri |
+
+## ✨ Features
+
+### 📈 Live Price Ticker
+A scrolling marquee shows current prices with ▲ / ▼ percentage changes, so users can spot price movements instantly.
+
+### 🗂️ Category Browsing
+Quickly move between categories: rice, lentils, oil, vegetables, fish, meat, eggs-dairy and spices.
+
+### 🔺 Daily Price Movements
+Product cards highlight what got more expensive today, with the price and the percentage change.
+
+### 🔐 Secure Authentication
+Users can sign up and sign in with email and password, or continue with Google or GitHub.
+
+### 🛡️ Protected Pages
+Product details and the profile page are available only to signed-in users. Visitors are redirected to the sign-in page and sent back after logging in.
+
+### 👤 Profile Management
+A profile page shows the user's photo, name and email, and lets them update their name. Users can also sign out from the header menu.
+
+### 🔔 Instant Feedback
+Toast notifications confirm sign in, sign out, profile updates and show clear error messages.
+
+### 📱 Responsive Bangla Interface
+A clean, mobile-friendly layout designed for Bangla readers.
+
+## 💻 Run Locally
+
+Follow these steps to run the project on your local machine.
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone YOUR_GITHUB_REPOSITORY_URL
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Navigate to the project folder
+```bash
+cd market-price
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Install dependencies
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+### 4. Create a `.env` file
+```env
+MONGODB_URI=your_mongodb_connection_string
+BETTER_AUTH_SECRET=your_random_secret
+BETTER_AUTH_URL=http://localhost:3000
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Start the development server
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 6. Open in your browser
+```
+http://localhost:3000
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Main Dependencies
 
-## Deploy on Vercel
+- Next.js
+- React and React DOM
+- TypeScript
+- Tailwind CSS
+- DaisyUI
+- Better Auth
+- MongoDB
+- React Hot Toast
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔗 Relevant Links
+
+🌐 **Live Demo:** _add your deployed link here_
+💻 **GitHub Repository:** https://github.com/Tamal-codes
+
+## 👨‍💻 Author
+
+**Towfiqul Islam**
+
+Web Developer | Frontend Developer
+
+🔗 [LinkedIn](https://www.linkedin.com/in/towfiqul-islam-46a312431/)

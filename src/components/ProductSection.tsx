@@ -1,9 +1,15 @@
+
 import { Product } from "@/types/product";
 import ProductCard from "./ProductCard";
 
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products", { cache: "no-store" });
+  const res = await fetch(
+    "https://api.api-store.workers.dev/api/bazardor/products",
+    { cache: "no-store" }
+  );
+
   if (!res.ok) throw new Error("ডেটা আনতে সমস্যা হয়েছে");
+
   return res.json();
 }
 
@@ -21,7 +27,10 @@ const Grid = ({ title, products, subtitle, icon, iconColor }: GridProps) => (
       {icon && <span className={`mr-2 text-base ${iconColor}`}>{icon}</span>}
       {title}
     </h2>
-    {subtitle && <p className="mt-1 text-sm text-gray-500">{subtitle}</p>}
+
+    {subtitle && (
+      <p className="mt-1 text-sm text-gray-500">{subtitle}</p>
+    )}
 
     <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {products.map((p) => (
@@ -52,17 +61,22 @@ const ProductSection = async () => {
         iconColor="text-red-600"
         products={increased}
       />
+
       <Grid
         title="আজ দাম কমেছে"
         icon="▼"
         iconColor="text-green-600"
         products={decreased}
       />
-      <Grid
-        title="সব পণ্য"
-        subtitle={`মোট ${products.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে`}
-        products={products}
-      />
+
+      {/* All Products Section */}
+      <section id="সব-পণ্য" className="scroll-mt-6">
+        <Grid
+          title="সব পণ্য"
+          subtitle={`মোট ${products.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে`}
+          products={products}
+        />
+      </section>
     </>
   );
 };

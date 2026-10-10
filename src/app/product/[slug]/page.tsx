@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { Product } from "@/types/product";
 
 async function getProduct(slug: string): Promise<Product | undefined> {
@@ -36,19 +37,7 @@ const ProductDetailsPage = async ({
   const product = await getProduct(slug);
 
   if (!product) {
-    return (
-      <main className="min-h-screen bg-[#f3f8f4] px-4 py-10">
-        <div className="mx-auto max-w-5xl rounded-2xl border border-gray-200 bg-white p-10 text-center">
-          <h1 className="text-xl font-bold text-gray-800">
-            পণ্য পাওয়া যায়নি
-          </h1>
-
-          <p className="mt-2 text-sm text-gray-500">
-            এই পণ্যের তথ্য খুঁজে পাওয়া যায়নি।
-          </p>
-        </div>
-      </main>
-    );
+    notFound();
   }
 
   const marketPrices = product.markets.flatMap((market) => [
@@ -83,11 +72,8 @@ const ProductDetailsPage = async ({
         <div className="mb-6 flex items-center gap-2 text-xs text-gray-500">
           <span>হোম</span>
           <span>›</span>
-
           <span>{product.categoryNameBn}</span>
-
           <span>›</span>
-
           <span className="text-gray-700">
             {product.nameBn}
           </span>
@@ -115,8 +101,8 @@ const ProductDetailsPage = async ({
                     {priceDifference > 0
                       ? `${toBn(priceDifference)} টাকা বেড়েছে`
                       : priceDifference < 0
-                      ? `${toBn(Math.abs(priceDifference))} টাকা কমেছে`
-                      : "অপরিবর্তিত"}
+                        ? `${toBn(Math.abs(priceDifference))} টাকা কমেছে`
+                        : "অপরিবর্তিত"}
                   </span>
                 </p>
               </div>
@@ -150,7 +136,6 @@ const ProductDetailsPage = async ({
           </h2>
 
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {/* Lowest */}
             <div className="rounded-xl border border-gray-200 p-4">
               <p className="text-xs text-gray-500">
                 সর্বনিম্ন দাম
@@ -168,7 +153,6 @@ const ProductDetailsPage = async ({
               </p>
             </div>
 
-            {/* Highest */}
             <div className="rounded-xl border border-gray-200 p-4">
               <p className="text-xs text-gray-500">
                 সর্বাধিক দাম
@@ -186,7 +170,6 @@ const ProductDetailsPage = async ({
               </p>
             </div>
 
-            {/* Average */}
             <div className="rounded-xl border border-gray-200 p-4">
               <p className="text-xs text-gray-500">
                 গড় দাম
