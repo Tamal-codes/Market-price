@@ -16,8 +16,7 @@ const Navlinks = async ({ activeCategory }: NavlinksProps) => {
 
     try {
         const res = await fetch(
-            "https://api.api-store.workers.dev/api/bazardor/categories",
-            { cache: "no-store" }
+            "https://api.api-store.workers.dev/api/bazardor/categories"
         );
         if (res.ok) {
             data = await res.json();

@@ -1,14 +1,15 @@
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
+import { Product } from "@/types/product";
 
 const Marquee = async () => {
   const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
-  const data = await res.json();
+  const data: Product[] = await res.json();
 
   return (
     <div className="w-full overflow-hidden py-2">
-      <MarqueeText direction="right" duration={40} startOffset={0}>
-        {data.map((h) => {
+      <MarqueeText direction="right" duration={40}>
+        {data.map((h: Product) => {
           const dir = h.change?.dir;
           const pct = h.change?.pct;
           const isUp = dir === "up";
