@@ -6,7 +6,7 @@ Users can browse prices by category, follow the live price ticker, see which ite
 
 ## 🚀 Live Demo
 
-🌐 **Live Website:** _add your deployed link here_
+🌐 **Live Website:** _ https://market-price-rouge.vercel.app/
 
 ## 🛠️ Technologies Used
 
@@ -101,7 +101,7 @@ http://localhost:3000
 
 ## 🔗 Relevant Links
 
-🌐 **Live Demo:** _add your deployed link here_
+🌐 **Live Demo:** _https://market-price-rouge.vercel.app/
 💻 **GitHub Repository:** https://github.com/Tamal-codes
 
 ## 👨‍💻 Author
