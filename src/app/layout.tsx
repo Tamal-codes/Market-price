@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Serif_Bengali } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -25,21 +26,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
 
-
-
-
         <Header></Header>
-
 
         {children}
 
         <Footer></Footer>
 
-
-
-
-
-
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            success: { iconTheme: { primary: "#08883f", secondary: "#fff" } },
+          }}
+        />
 
       </body>
     </html>

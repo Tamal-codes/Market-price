@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 import { authClient } from '@/lib/auth-client';
 
 const SignInPage = () => {
     const router = useRouter();
-    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,20 +16,21 @@ const SignInPage = () => {
         const email = (form.elements.namedItem('email') as HTMLInputElement).value;
         const password = (form.elements.namedItem('password') as HTMLInputElement).value;
 
-        setError('');
         setLoading(true);
 
         const { error } = await authClient.signIn.email({ email, password });
 
         setLoading(false);
-        if (error) return setError(error.message ?? 'সাইন ইন করা যায়নি।');
+        if (error) return toast.error(error.message ?? 'সাইন ইন করা যায়নি।');
 
+        toast.success('সফলভাবে সাইন ইন হয়েছে।');
         router.push('/');
         router.refresh();
     };
 
     const handleSocial = async (provider: 'google' | 'github') => {
-        await authClient.signIn.social({ provider, callbackURL: '/' });
+        const { error } = await authClient.signIn.social({ provider, callbackURL: '/' });
+        if (error) toast.error(error.message ?? 'লগইন করা যায়নি।');
     };
 
     return (
@@ -46,8 +47,6 @@ const SignInPage = () => {
 
                     <label className="label text-[#17261c] mt-2">পাসওয়ার্ড</label>
                     <input name="password" type="password" className="input w-full" placeholder="আপনার পাসওয়ার্ড" required />
-
-                    {error && <p className="text-error text-sm mt-2">{error}</p>}
 
                     <button
                         type="submit"

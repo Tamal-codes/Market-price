@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 import { authClient } from '@/lib/auth-client';
 
 const SignUpPage = () => {
     const router = useRouter();
-    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,23 +18,24 @@ const SignUpPage = () => {
         const password = (form.elements.namedItem('password') as HTMLInputElement).value;
         const confirm = (form.elements.namedItem('confirm') as HTMLInputElement).value;
 
-        if (password.length < 8) return setError('পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে।');
-        if (password !== confirm) return setError('দুটি পাসওয়ার্ড মিলছে না।');
+        if (password.length < 8) return toast.error('পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে।');
+        if (password !== confirm) return toast.error('দুটি পাসওয়ার্ড মিলছে না।');
 
-        setError('');
         setLoading(true);
 
         const { error } = await authClient.signUp.email({ name, email, password });
 
         setLoading(false);
-        if (error) return setError(error.message ?? 'অ্যাকাউন্ট তৈরি করা যায়নি।');
+        if (error) return toast.error(error.message ?? 'অ্যাকাউন্ট তৈরি করা যায়নি।');
 
+        toast.success('অ্যাকাউন্ট তৈরি হয়েছে।');
         router.push('/');
         router.refresh();
     };
 
     const handleSocial = async (provider: 'google' | 'github') => {
-        await authClient.signIn.social({ provider, callbackURL: '/' });
+        const { error } = await authClient.signIn.social({ provider, callbackURL: '/' });
+        if (error) toast.error(error.message ?? 'লগইন করা যায়নি।');
     };
 
     return (
@@ -57,8 +58,6 @@ const SignUpPage = () => {
 
                     <label className="label text-[#17261c] mt-2">পাসওয়ার্ড নিশ্চিত করুন</label>
                     <input name="confirm" type="password" className="input w-full" placeholder="আবার লিখুন" required />
-
-                    {error && <p className="text-error text-sm mt-2">{error}</p>}
 
                     <button
                         type="submit"
