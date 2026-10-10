@@ -13,7 +13,7 @@ const UserInfo = () => {
     const [open, setOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
 
-    // মেনুর বাইরে ক্লিক করলে বন্ধ হবে
+  
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (menuRef.current && !menuRef.current.contains(e.target as Node)) {

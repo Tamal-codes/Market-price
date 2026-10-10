@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 
 async function getProducts(): Promise<Product[]> {
   const res = await fetch(
-    "https://api.abcz.workers.dev/api/bazardor/products",
+    "https://openapi.programming-hero.com/api/bazardor/products",
     { cache: "no-store" }
   );
 
@@ -69,7 +69,7 @@ const ProductSection = async () => {
         products={decreased}
       />
 
-      {/* All Products Section */}
+  
       <section id="সব-পণ্য" className="scroll-mt-6">
         <Grid
           title="সব পণ্য"

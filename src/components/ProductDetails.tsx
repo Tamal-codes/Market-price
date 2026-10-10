@@ -35,7 +35,7 @@ const ProductDetails = async ({ selectedCategory, sort }: ProductDetailsProps) =
     let allProducts: Product[] = [];
     try {
         const res = await fetch(
-            "https://api.abcz.workers.dev/api/bazardor/products",
+            "https://openapi.programming-hero.com/api/bazardor/products",
             { cache: "no-store" }
         );
         if (res.ok) {
@@ -52,7 +52,7 @@ const ProductDetails = async ({ selectedCategory, sort }: ProductDetailsProps) =
                   (p) => (p.categorySlug ?? p.category) === selectedCategory
               );
 
-    // দাম অনুযায়ী সাজানো (মূল তালিকা না বদলে কপি করে)
+  
     const products = [...filtered];
     if (sort === "low") products.sort((a, b) => Number(a.today) - Number(b.today));
     if (sort === "high") products.sort((a, b) => Number(b.today) - Number(a.today));
@@ -66,7 +66,7 @@ const ProductDetails = async ({ selectedCategory, sort }: ProductDetailsProps) =
             id="সব-পণ্য"
             className="container mx-auto py-8 px-4 space-y-6 scroll-mt-6"
         >
-            {/* Category header */}
+        
             <div className="p-6 bg-white rounded-2xl border border-gray-100 flex items-center gap-4">
                 <div className="text-4xl">{icon}</div>
                 <div>
@@ -77,7 +77,7 @@ const ProductDetails = async ({ selectedCategory, sort }: ProductDetailsProps) =
                 </div>
             </div>
 
-            {/* মোট সংখ্যা + সাজানোর dropdown */}
+        
             <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="text-sm text-gray-500">
                     মোট {toBn(products.length)}টি পণ্য দেখানো হচ্ছে
@@ -85,7 +85,7 @@ const ProductDetails = async ({ selectedCategory, sort }: ProductDetailsProps) =
                 <SortDropdown category={selectedCategory} sort={sort} />
             </div>
 
-            {/* Product grid */}
+          
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {products.length > 0 ? (
                     products.map((p) => {

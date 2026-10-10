@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
 
 const ProfilePage = () => {
     const router = useRouter();
@@ -53,8 +54,8 @@ const ProfilePage = () => {
                 <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white p-5">
                     <div className="flex items-center gap-4">
                         {image ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={image} alt={session.user.name} referrerPolicy="no-referrer" className="h-16 w-16 rounded-xl object-cover" />
+                          
+                            <Image src={image} alt={session.user.name} referrerPolicy="no-referrer" className="h-16 w-16 rounded-xl object-cover" />
                         ) : (
                             <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-emerald-600 text-2xl font-medium text-white">
                                 {session.user.name.charAt(0).toUpperCase()}
