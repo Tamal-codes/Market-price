@@ -6,15 +6,15 @@ import ProductSection from "@/components/ProductSection";
 export default async function Home({
     searchParams,
 }: {
-    searchParams: Promise<{ category?: string }>;
+    searchParams: Promise<{ category?: string; sort?: string }>;
 }) {
-    const { category } = await searchParams;
+    const { category, sort } = await searchParams;
 
     return (
         <div>
             <Marquee />
             {category ? (
-                <ProductDetails selectedCategory={category} />
+                <ProductDetails selectedCategory={category} sort={sort} />
             ) : (
                 <>
                     <Banner />

@@ -1,5 +1,5 @@
-
 import Link from "next/link";
+import SortDropdown from "./ShortDropdown";
 
 interface Product {
     id: string | number;
@@ -17,6 +17,7 @@ interface Product {
 
 interface ProductDetailsProps {
     selectedCategory: string;
+    sort?: string;
 }
 
 const toBn = (n: number | string) =>
@@ -30,7 +31,7 @@ const unitBn = (u: string) =>
         >
     )[u] ?? u;
 
-const ProductDetails = async ({ selectedCategory }: ProductDetailsProps) => {
+const ProductDetails = async ({ selectedCategory, sort }: ProductDetailsProps) => {
     let allProducts: Product[] = [];
     try {
         const res = await fetch(
@@ -44,14 +45,19 @@ const ProductDetails = async ({ selectedCategory }: ProductDetailsProps) => {
         console.error("Failed to fetch products:", error);
     }
 
-    const products =
+    const filtered =
         selectedCategory === "all"
             ? allProducts
             : allProducts.filter(
                   (p) => (p.categorySlug ?? p.category) === selectedCategory
               );
 
-    const first = products[0];
+    // দাম অনুযায়ী সাজানো (মূল তালিকা না বদলে কপি করে)
+    const products = [...filtered];
+    if (sort === "low") products.sort((a, b) => Number(a.today) - Number(b.today));
+    if (sort === "high") products.sort((a, b) => Number(b.today) - Number(a.today));
+
+    const first = filtered[0];
     const title = first?.categoryNameBn ?? selectedCategory;
     const icon = first?.categoryIcon ?? "🛒";
 
@@ -71,9 +77,13 @@ const ProductDetails = async ({ selectedCategory }: ProductDetailsProps) => {
                 </div>
             </div>
 
-            <p className="text-sm text-gray-500">
-                মোট {toBn(products.length)}টি পণ্য দেখানো হচ্ছে
-            </p>
+            {/* মোট সংখ্যা + সাজানোর dropdown */}
+            <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="text-sm text-gray-500">
+                    মোট {toBn(products.length)}টি পণ্য দেখানো হচ্ছে
+                </p>
+                <SortDropdown category={selectedCategory} sort={sort} />
+            </div>
 
             {/* Product grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
